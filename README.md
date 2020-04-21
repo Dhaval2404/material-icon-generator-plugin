@@ -29,7 +29,7 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 
 # 🎬Preview
- 
+ ![material-icon-generator-plugin-demo.gif](https://github.com/Dhaval2404/material-icon-generator-plugin/blob/master/art/material-icon-generator-plugin-demo.gif)
 
 # 🛠Installation Manually
 
