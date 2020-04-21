@@ -33,7 +33,7 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 # 🛠Installation Manually
 
-1. Download the [material-icon-generator-plugin.zip](https://github.com/konifar/material-icon-generator-plugin/raw/master/material-icon-generator-plugin.zip)
+1. Download the [material-icon-generator-plugin.zip](https://github.com/dhaval2404/material-icon-generator-plugin/raw/master/material-icon-generator-plugin.zip)
 
 2. `File > Settings > Plugins > Setting Icon on Top >Install plugin from disk...` Select material-icon-generator-plugin.zip above.
 
