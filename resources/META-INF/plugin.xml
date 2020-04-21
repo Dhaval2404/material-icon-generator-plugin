@@ -28,6 +28,8 @@
         <!-- Add your extensions here -->
     </extensions>
 
+    <depends>com.intellij.modules.java</depends>
+
     <actions>
         <action id="MaterialIconGeneratorAction"
                 class="com.github.dhaval2404.material_icon_generator.MaterialIconGeneratorAction"
