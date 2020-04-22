@@ -41,7 +41,7 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 ## 🛠Install IntelliJ Plugin Repositories
 
-1. `File > Settings > Plugins >  > Browse repositories`, then search **material icon generator plugin**.
+1. `File > Settings > Plugins >  > Browse repositories`, then search **Material Design Icon**.
 
 ## 📃 Component Used
 * [android-material-design-icon-generator-plugin](https://github.com/konifar/android-material-design-icon-generator-plugin)
