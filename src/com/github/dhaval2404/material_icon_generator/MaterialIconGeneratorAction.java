@@ -52,7 +52,7 @@ public class MaterialIconGeneratorAction extends AnAction {
         if (projectPath != null && projectPath.equals(modulePath)) {
             //Project Path
             defaultResourcePath = projectPath + "/app/src/main/res";
-        } else if(modulePath!=null){
+        } else if(modulePath!=null && new File(modulePath + "/src/main/res").exists()){
             //Module Path
             defaultResourcePath = modulePath + "/src/main/res";
         } else {
