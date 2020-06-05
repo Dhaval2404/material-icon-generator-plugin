@@ -422,7 +422,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
                 Image colorImg = generateColoredIcon((BufferedImage) img);
                 ImageIcon icon = new ImageIcon(colorImg);
                 imageLabel.setIcon(icon);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();

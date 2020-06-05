@@ -1,8 +1,8 @@
 package com.github.dhaval2404.material_icon_generator;
 
 import com.github.dhaval2404.material_icon_generator.constant.Theme;
+import com.github.dhaval2404.material_icon_generator.util.BufferedImageTranscoder;
 import com.github.dhaval2404.material_icon_generator.util.FileUtil;
-import com.github.dhaval2404.material_icon_generator.util.SVGImage;
 
 import java.awt.Image;
 import java.io.File;
@@ -82,11 +82,11 @@ public class IconModel {
         this.drawable = drawable;
     }
 
-    public Image getPreviewImage() throws IOException {
+    public Image getPreviewImage() {
         if (iconName != null) {
-            int size = getSize() * 3;
+            int size = getSize() * 2;
             String url = theme.getPreviewUrl(getIconId());
-            return new SVGImage(url).getImage(size, size);
+            return new BufferedImageTranscoder(url, size).getBufferedImage();
         } else {
             return null;
         }
@@ -337,7 +337,8 @@ public class IconModel {
 
     private String getIconId() {
         String[] fileString = iconName.split("/");
-        return fileString[1];
+        if (fileString.length > 1) return fileString[1];
+        else return iconName;
     }
 
 }
