@@ -48,6 +48,10 @@ public class MaterialIconGeneratorAction extends AnAction {
             System.out.println("modulePath1:" + modulePath1);
         }
 
+        // Patch for android studio 4.0+
+        if(modulePath!=null) modulePath = modulePath.replace("/.idea/modules", "");
+        if(projectPath!=null) projectPath = projectPath.replace("/.idea/modules", "");
+
         String defaultResourcePath;
         if (projectPath != null && projectPath.equals(modulePath)) {
             //Project Path
@@ -57,7 +61,7 @@ public class MaterialIconGeneratorAction extends AnAction {
             defaultResourcePath = modulePath + "/src/main/res";
         } else {
             //Module Path
-            defaultResourcePath = projectPath + "app/src/main/res";
+            defaultResourcePath = projectPath + "/app/src/main/res";
         }
 
 
