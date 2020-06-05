@@ -1,16 +1,26 @@
 <idea-plugin>
     <id>com.github.dhaval2404.material_icon_generator</id>
     <name>Material Design Icon Generator</name>
-    <version>1.0</version>
+    <version>1.1</version>
     <vendor email="dhavalpatel244@gmail.com"
-            url="https://github.com/Dhaval2404/material-icon-generator-plugin">Android Material Icon Generator Plugin</vendor>
+            url="https://github.com/Dhaval2404/material-icon-generator-plugin">Material Design Icon Generator</vendor>
     <description><![CDATA[
       Android Studio & IntelliJ Plugin to import Material Design Icons.<br> This plugin help you to set material icon in your app resources.
       Its clone of https://github.com/konifar/android-material-design-icon-generator-plugin.
     ]]></description>
 
     <change-notes><![CDATA[
-      1.0: Initial version released with Theme(Fill/Outline/Round/TwoTone/Sharp) support<br>
+        <h1>1.1</h1>
+        <ul>
+          <li>Fixed image padding issue when choose color other than black</li>
+          <li>Fixed image preview not visible issue</li>
+          <li>Added compatible with android studio 4.0+ (#1)</li>
+          <li>Added plugin icon</li>
+        </ul>
+        <h1>1.0</h1>
+        <ul>
+          <li>Initial version released with Theme(Fill/Outline/Round/TwoTone/Sharp) support</li>
+        </ul>
     ]]>
     </change-notes>
 

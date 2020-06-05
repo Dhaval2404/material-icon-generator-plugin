@@ -2,6 +2,7 @@
 =============================================
 
 [![Releases](https://img.shields.io/github/release/Dhaval2404/material-icon-generator-plugin/all.svg?style=flat-square)](https://github.com/Dhaval2404/material-icon-generator-plugin/releases)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/14170-material-design-icon)](https://plugins.jetbrains.com/plugin/14170-material-design-icon)
 [![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-2018.1%2B-green)](https://img.shields.io/badge/IntelliJ%20IDEA-2018.1%2B-green)
 [![Android Studio](https://img.shields.io/badge/Android%20Studio-3.2%2B-green)](https://img.shields.io/badge/Android%20Studio-3.2%2B-green)
 ![Language](https://img.shields.io/badge/language-java-red)
@@ -24,7 +25,7 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 - Support Android Studio Multi-Module Architecture, You can select and add icons to particular module.
 - Added Support for multiple icon themes(**Filled, Outline, Rounded, Two-Tone, Sharp**) 	
-- Icons are downloaded at the runtime instead of pre-build with plugin to reduce plugin size
+- Icons downloaded at the runtime instead of pre-build with plugin to reduce plugin size
 - Plugin Size is just 250KB.
 
 
@@ -41,7 +42,20 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 ## 🛠Install IntelliJ Plugin Repositories
 
-1. `File > Settings > Plugins >  > Browse repositories`, then search **Material Design Icon**.
+1. `File > Settings > Plugins > Browse repositories`, then search **Material Design Icon**.
+
+# ✔️Changelog
+
+### Version: 1.1
+
+  * Fixed image padding issue when choose color other than black 
+  * Fixed image preview not visible issue
+  * Added compatible with android studio 4.0+ [#1](https://github.com/Dhaval2404/material-icon-generator-plugin/issues/1)
+  * Added plugin icon
+
+### Version: 1.0
+
+  * Initial Build
 
 ## 📃 Component Used
 * [android-material-design-icon-generator-plugin](https://github.com/konifar/android-material-design-icon-generator-plugin)
