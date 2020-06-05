@@ -1,5 +1,6 @@
 package com.github.dhaval2404.material_icon_generator.util;
 
+import com.intellij.util.ui.ImageUtil;
 import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
 import org.apache.batik.bridge.BridgeContext;
 import org.apache.batik.bridge.GVTBuilder;
@@ -76,7 +77,7 @@ public final class SVGImage {
      */
     public Image getImage(int width, int height) {
         // Paint svg into image buffer
-        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage bufferedImage = ImageUtil.createImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = (Graphics2D) bufferedImage.getGraphics();
 
         // For a smooth graphic with no jagged edges or rastorized look.
