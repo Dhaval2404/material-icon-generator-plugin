@@ -76,7 +76,7 @@ import java.util.Map;
  */
 public class MaterialDesignIconGenerateDialog extends DialogWrapper {
 
-    private static final String TITLE = "Material Icon Generator";
+    private static final String TITLE = "Material Design Icon Generator";
     private static final String FILE_ICON_COMBOBOX_XML = "/template.xml";
     private static final String COLOR_PALETTE_COMBOBOX_XML = "/palette.xml";
 

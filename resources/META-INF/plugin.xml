@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.dhaval2404.material_icon_generator</id>
-    <name>Material Design Icon</name>
+    <name>Material Design Icon Generator</name>
     <version>1.0</version>
     <vendor email="dhavalpatel244@gmail.com"
             url="https://github.com/Dhaval2404/material-icon-generator-plugin">Android Material Icon Generator Plugin</vendor>
@@ -33,7 +33,7 @@
     <actions>
         <action id="MaterialIconGeneratorAction"
                 class="com.github.dhaval2404.material_icon_generator.MaterialIconGeneratorAction"
-                text="Material Design Icon" description="Add Material design icon to your app resources"
+                text="Material Design Icon Generator" description="Add Material design icon to your app resources"
                 icon="/pluginIcon.svg">
             <add-to-group group-id="NewGroup" anchor="last"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt D"/>
