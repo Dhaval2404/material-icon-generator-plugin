@@ -1,6 +1,5 @@
 package com.github.dhaval2404.material_icon_generator.util;
 
-import com.intellij.util.ui.ImageUtil;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
@@ -40,7 +39,7 @@ public class BufferedImageTranscoder extends ImageTranscoder {
 
     @Override
     public BufferedImage createImage(int w, int h) {
-        return ImageUtil.createImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        return getEmptyBufferedImage(w, h);
     }
 
     @Override
@@ -50,6 +49,10 @@ public class BufferedImageTranscoder extends ImageTranscoder {
 
     public BufferedImage getBufferedImage() {
         return img;
+    }
+
+    public static BufferedImage getEmptyBufferedImage(int w, int h) {
+        return new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
     }
 
 }

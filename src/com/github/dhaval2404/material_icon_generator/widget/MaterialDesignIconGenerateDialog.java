@@ -1,6 +1,7 @@
 package com.github.dhaval2404.material_icon_generator.widget;
 
 import com.github.dhaval2404.material_icon_generator.IconModel;
+import com.github.dhaval2404.material_icon_generator.util.BufferedImageTranscoder;
 import com.github.dhaval2404.material_icon_generator.util.ColorUtil;
 import com.github.dhaval2404.material_icon_generator.util.MouseClickListener;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
@@ -11,7 +12,6 @@ import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.openapi.util.JDOMUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.util.ui.ImageUtil;
 import com.sun.org.apache.xml.internal.serializer.OutputPropertiesFactory;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -633,7 +633,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
         int height = image.getHeight();
         boolean hasAlpha = image.getColorModel().hasAlpha();
 
-        BufferedImage newImage = ImageUtil.createImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage newImage = BufferedImageTranscoder.getEmptyBufferedImage(width, height);
         WritableRaster raster = newImage.getRaster();
         for (int xx = 0; xx < width; xx++) {
             for (int yy = 0; yy < height; yy++) {
