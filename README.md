@@ -40,13 +40,13 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 3. Restart IntelliJ/Android Studio to activate plugin.
 
-![plugin-manual-installation.png](https://github.com/Dhaval2404/material-icon-generator-plugin/blob/master/art/plugin-manual-installation.png)
+    <img src="https://github.com/Dhaval2404/material-icon-generator-plugin/blob/master/art/plugin-manual-installation.png" width="640">
 
 ## 🛠Install IntelliJ Plugin Repositories
 
 1. `File > Settings > Plugins > Browse repositories`, then search **Material Design Icon**.
 
-![intellij-plugin-repositories.png](https://github.com/Dhaval2404/material-icon-generator-plugin/blob/master/art/intellij-plugin-repositories.png)
+    <img src="https://github.com/Dhaval2404/material-icon-generator-plugin/blob/master/art/intellij-plugin-repositories.png" width="640">
 
 # ✔️Changelog
 
