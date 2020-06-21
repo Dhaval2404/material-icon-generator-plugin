@@ -50,11 +50,11 @@ public class FileUtil {
     public static File getIconDirectory(String iconUrl) throws IOException {
         //Get Root Dir
         File rootDir = getRootDir();
-        System.out.println("Root Dir: "+rootDir.getAbsolutePath());
+        // System.out.println("Root Dir: "+rootDir.getAbsolutePath());
 
         //Get Icon Zip
         File iconZip = downloadFile(rootDir, iconUrl);
-        System.out.println("Zip File: "+iconZip.getAbsolutePath());
+        System.out.println("Zip File: " + iconZip.getAbsolutePath());
 
         //Extract Zip file
         new ZipFile(iconZip).extractAll(rootDir.getPath());
