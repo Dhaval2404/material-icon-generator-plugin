@@ -6,7 +6,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.Project;
 
 import javax.annotation.Nonnull;
@@ -34,36 +33,35 @@ public class MaterialIconGeneratorAction extends AnAction {
 
         if (project != null) {
             projectPath = project.getBasePath();
-            System.out.println("projectPath:" + projectPath);
+            // System.out.println("projectPath:" + projectPath);
         }
 
         if (module != null) {
             modulePath = module.getModuleFile().getParent().getPath();
-            System.out.println("modulePath:" + modulePath);
+            // System.out.println("modulePath:" + modulePath);
         }
 
-        Module[] modules = ModuleManager.getInstance(project).getModules();
+        /*Module[] modules = ModuleManager.getInstance(project).getModules();
         for(Module module1: modules){
             String modulePath1 = module1.getModuleFile().getParent().getPath();
             System.out.println("modulePath1:" + modulePath1);
-        }
+        }*/
 
         // Patch for android studio 4.0+
-        if(modulePath!=null) modulePath = modulePath.replace("/.idea/modules", "");
-        if(projectPath!=null) projectPath = projectPath.replace("/.idea/modules", "");
+        if (modulePath != null) modulePath = modulePath.replace("/.idea/modules", "");
+        if (projectPath != null) projectPath = projectPath.replace("/.idea/modules", "");
 
         String defaultResourcePath;
         if (projectPath != null && projectPath.equals(modulePath)) {
             //Project Path
             defaultResourcePath = projectPath + "/app/src/main/res";
-        } else if(modulePath!=null){
+        } else if (modulePath != null) {
             //Module Path
             defaultResourcePath = modulePath + "/src/main/res";
         } else {
             //Module Path
             defaultResourcePath = projectPath + "/app/src/main/res";
         }
-
 
         MaterialDesignIconGenerateDialog dialog = new MaterialDesignIconGenerateDialog(event.getProject(), defaultResourcePath);
         dialog.show();
