@@ -3,8 +3,8 @@
 
 [![Releases](https://img.shields.io/github/release/Dhaval2404/material-icon-generator-plugin/all.svg?style=flat-square)](https://github.com/Dhaval2404/material-icon-generator-plugin/releases)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/14170-material-design-icon)](https://plugins.jetbrains.com/plugin/14170-material-design-icon)
-[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-2018.1%2B-green)](https://img.shields.io/badge/IntelliJ%20IDEA-2018.1%2B-green)
-[![Android Studio](https://img.shields.io/badge/Android%20Studio-3.2%2B-green)](https://img.shields.io/badge/Android%20Studio-3.2%2B-green)
+[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-2018.1%2B-green)](https://www.jetbrains.com/idea/download/)
+[![Android Studio](https://img.shields.io/badge/Android%20Studio-3.2%2B-green)](https://developer.android.com/studio)
 ![Language](https://img.shields.io/badge/language-java-red)
 [![PRWelcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Dhaval2404/material-icon-generator-plugin)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Dhaval2404/material-icon-generator-plugin.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20out%20the%20Material%20Icon%20Generator%20Plugin%20to%20import%20material%20design%20icon%20into%20your%20android%20projects.%20%0Ahttps%3A%2F%2Fgithub.com%2FDhaval2404%2Fmaterial-icon-generator-plugin%20%23AndroidDev%20%23Android)
@@ -40,9 +40,13 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 3. Restart IntelliJ/Android Studio to activate plugin.
 
+![plugin-manual-installation.png](https://github.com/Dhaval2404/material-icon-generator-plugin/blob/master/art/plugin-manual-installation.png)
+
 ## 🛠Install IntelliJ Plugin Repositories
 
 1. `File > Settings > Plugins > Browse repositories`, then search **Material Design Icon**.
+
+![intellij-plugin-repositories.png](https://github.com/Dhaval2404/material-icon-generator-plugin/blob/master/art/intellij-plugin-repositories.png)
 
 # ✔️Changelog
 
