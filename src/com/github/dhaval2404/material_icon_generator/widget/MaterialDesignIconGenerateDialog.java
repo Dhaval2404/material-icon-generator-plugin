@@ -170,7 +170,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
             }
         });
 
-        radioImage.setSelected(true);
+        radioVector.setSelected(true);
     }
 
     private void toggleImageType(boolean shouldVectorSelected) {
