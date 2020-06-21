@@ -102,4 +102,16 @@ public class FilterComboBox extends JComboBox<String> {
         comboBoxList.add(text);
     }
 
+    /**
+     * Check if item exist in provided ComboBox Options
+     *
+     * @return item name if exist else return null
+     */
+    public String getSelectedItemText() {
+        String item = (String) super.getSelectedItem();
+        if(comboBoxList.contains(item)){
+            return item;
+        }
+        else return null;
+    }
 }

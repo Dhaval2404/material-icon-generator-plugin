@@ -419,9 +419,11 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
         new Thread(() -> {
             try {
                 Image img = model.getPreviewImage();
-                Image colorImg = generateColoredIcon((BufferedImage) img);
-                ImageIcon icon = new ImageIcon(colorImg);
-                imageLabel.setIcon(icon);
+                if(img!=null) {
+                    Image colorImg = generateColoredIcon((BufferedImage) img);
+                    ImageIcon icon = new ImageIcon(colorImg);
+                    imageLabel.setIcon(icon);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -450,9 +452,12 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
 
         comboBoxIcon.addActionListener(event -> {
             if (model != null) {
-                model.setIconAndFileName((String) comboBoxIcon.getSelectedItem());
-                textFieldFileName.setText(model.getFileName());
-                showIconPreview();
+                String item = comboBoxIcon.getSelectedItemText();
+                if(item!=null) {
+                    model.setIconAndFileName(item);
+                    textFieldFileName.setText(model.getFileName());
+                    showIconPreview();
+                }
             }
         });
 
