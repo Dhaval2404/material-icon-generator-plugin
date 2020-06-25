@@ -50,6 +50,12 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 # ✔️Changelog
 
+### Version: 1.2
+
+  * Sync icon database with Material Design Icons
+  * Fixed icon search keyboard lagging issue
+  * Select vector icon as default option
+
 ### Version: 1.1
 
   * Fixed image padding issue when choose color other than black 
