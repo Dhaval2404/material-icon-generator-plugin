@@ -7,6 +7,7 @@ import com.github.dhaval2404.material_icon_generator.util.FileUtil;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 /*
  * Copyright 2014-2015 Material Design Icon Generator (Yusuke Konishi)
@@ -52,6 +53,8 @@ public class IconModel {
     private boolean isVectorType;
     private boolean drawable;
 
+    private final Map<String, String> iconVersionMap;
+
     public IconModel(String iconName,
                      String displayColorName,
                      String colorCode,
@@ -65,7 +68,8 @@ public class IconModel {
                      boolean xxhdpi,
                      boolean xxxhdpi,
                      boolean isVectorType,
-                     boolean drawable) {
+                     boolean drawable,
+                     Map<String, String> iconVersionMap) {
         this.iconName = iconName;
         this.displayColorName = displayColorName;
         this.colorCode = colorCode;
@@ -80,12 +84,13 @@ public class IconModel {
         this.xxxhdpi = xxxhdpi;
         this.isVectorType = isVectorType;
         this.drawable = drawable;
+        this.iconVersionMap = iconVersionMap;
     }
 
     public Image getPreviewImage() {
         if (iconName != null) {
             int size = getSize() * 2;
-            String url = theme.getPreviewUrl(getIconId());
+            String url = theme.getPreviewUrl(getIconId(), iconVersionMap.get(iconName));
             return new BufferedImageTranscoder(url, size).getBufferedImage();
         } else {
             return null;
@@ -144,7 +149,8 @@ public class IconModel {
     public File getIconDirectory() throws IOException {
         if (iconName != null) {
             String iconId = getIconId();
-            String url = theme.getDownloadUrl(iconId);
+            String version = iconVersionMap.get(iconName);
+            String url = theme.getDownloadUrl(iconId, version);
             return FileUtil.getIconDirectory(url);
         } else {
             return null;

@@ -12,7 +12,7 @@ public enum Theme {
     TWO_TONE("twotone"),
     SHARP("sharp");
 
-    private String value;
+    private final String value;
 
     Theme(String value) {
         this.value = value;
@@ -22,14 +22,14 @@ public enum Theme {
         return value;
     }
 
-    public String getPreviewUrl(String iconName) {
+    public String getPreviewUrl(String iconName, String version) {
         String themeName = getIconType();
-        return String.format("https://fonts.gstatic.com/s/i/%s/%s/v1/24px.svg", themeName, iconName);
+        return String.format("https://fonts.gstatic.com/s/i/%s/%s/v%s/24px.svg", themeName, iconName, version);
     }
 
-    public String getDownloadUrl(String iconName) {
+    public String getDownloadUrl(String iconName, String version) {
         String themeName = getIconType();
-        return String.format("https://fonts.gstatic.com/s/i/%s/%s/v1/black-android.zip", themeName, iconName);
+        return String.format("https://fonts.gstatic.com/s/i/%s/%s/v%s/black-android.zip", themeName, iconName, version);
     }
 
     private String getIconType() {

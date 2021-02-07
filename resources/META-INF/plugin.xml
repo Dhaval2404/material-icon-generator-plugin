@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.github.dhaval2404.material_icon_generator</id>
     <name>Material Design Icon Generator</name>
-    <version>1.2</version>
+    <version>1.3</version>
     <vendor email="dhavalpatel244@gmail.com"
             url="https://github.com/Dhaval2404/material-icon-generator-plugin">Material Design Icon Generator</vendor>
     <description><![CDATA[
@@ -10,6 +10,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h1>1.3</h1>
+        <ul>
+          <li>Sync icon database with Material Design Icons</li>
+          <li>Fixed few icon download issue</li>
+        </ul>
         <h1>1.2</h1>
         <ul>
           <li>Sync icon database with Material Design Icons</li>

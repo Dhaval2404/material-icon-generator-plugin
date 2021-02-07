@@ -1,6 +1,7 @@
 package com.github.dhaval2404.material_icon_generator.widget;
 
 import com.github.dhaval2404.material_icon_generator.IconModel;
+import com.github.dhaval2404.material_icon_generator.MaterialIconTemplateGenerator;
 import com.github.dhaval2404.material_icon_generator.util.BufferedImageTranscoder;
 import com.github.dhaval2404.material_icon_generator.util.ColorUtil;
 import com.github.dhaval2404.material_icon_generator.util.MouseClickListener;
@@ -12,7 +13,6 @@ import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.openapi.util.JDOMUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.sun.org.apache.xml.internal.serializer.OutputPropertiesFactory;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jdom.Element;
@@ -52,8 +52,10 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /*
  * Copyright 2014-2015 Material Design Icon Generator (Yusuke Konishi)
@@ -91,6 +93,8 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
 
     private static final String ICON_WARNING = "/error_outline_black_36.png";
     private static final String ICON_DONE = "/thumb_up_alt_black_36.png";
+    private static final String S_KEY_INDENT_AMOUNT = "{http://xml.apache.org/xalan}indent-amount";
+    private static final Map<String, String> ICON_VERSION_MAP = new LinkedHashMap<>();
 
     private IconModel model;
     private Map<String, String> colorPaletteMap;
@@ -410,7 +414,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
         final boolean drawable = checkBoxDrawable.isSelected();
 
         return new IconModel(iconName, displayColorName, colorCode, theme, dp, fileName, resDir,
-                mdpi, hdpi, xdpi, xxdpi, xxxdpi, isVectorType, drawable);
+                mdpi, hdpi, xdpi, xxdpi, xxxdpi, isVectorType, drawable, ICON_VERSION_MAP);
     }
 
     private void showIconPreview() {
@@ -419,7 +423,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
         new Thread(() -> {
             try {
                 Image img = model.getPreviewImage();
-                if(img!=null) {
+                if (img != null) {
                     Image colorImg = generateColoredIcon((BufferedImage) img);
                     ImageIcon icon = new ImageIcon(colorImg);
                     imageLabel.setIcon(icon);
@@ -438,14 +442,24 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
 
     private void initIconComboBox() {
         try {
-            //Document doc = JDOMUtil.loadDocument(getClass().getResourceAsStream(FILE_ICON_COMBOBOX_XML));
-            //List<Element> elements = doc.getRootElement().getChildren();
             Element root = JDOMUtil.load(getClass().getResourceAsStream(FILE_ICON_COMBOBOX_XML));
             List<Element> elements = root.getChildren();
 
-            for (org.jdom.Element element : elements) {
-                comboBoxIcon.addItem(element.getText());
-            }
+            Map<String, String> template = new LinkedHashMap<>();
+            elements.forEach(element -> template.put(element.getText(), element.getAttributeValue("version")));
+            setComboBoxIcon(template);
+
+            new Thread(() -> {
+                try {
+                    long time1 = System.currentTimeMillis();
+                    Map<String, String> template2 = MaterialIconTemplateGenerator.getIconTemplate();
+                    setComboBoxIcon(template2);
+                    long time2 = System.currentTimeMillis() - time1;
+                    System.out.println(time2/1000.0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
         } catch (JDOMException | IOException e) {
             e.printStackTrace();
         }
@@ -453,7 +467,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
         comboBoxIcon.addActionListener(event -> {
             if (model != null) {
                 String item = comboBoxIcon.getSelectedItemText();
-                if(item!=null) {
+                if (item != null) {
                     model.setIconAndFileName(item);
                     textFieldFileName.setText(model.getFileName());
                     showIconPreview();
@@ -462,6 +476,15 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
         });
 
         comboBoxIcon.setSelectedIndex(0);
+    }
+
+    private void setComboBoxIcon(Map<String, String> template) {
+        ICON_VERSION_MAP.clear();
+        comboBoxIcon.clear();
+        for (String iconId : template.keySet()) {
+            comboBoxIcon.addItem(iconId);
+            ICON_VERSION_MAP.put(iconId, template.get(iconId));
+        }
     }
 
     @Override
@@ -515,6 +538,8 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
         }
         try {
             if (iconDir != null) {
+                System.out.println("iconDir.getAbsolutePath():"+iconDir.getAbsolutePath());
+                System.out.println("iconDir.exists():"+iconDir.exists());
                 FileUtils.deleteDirectory(iconDir);
             }
         } catch (Exception ex) {
@@ -608,7 +633,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty(OutputPropertiesFactory.S_KEY_INDENT_AMOUNT, "4");
+            transformer.setOutputProperty(S_KEY_INDENT_AMOUNT, "4");
             StreamResult result = new StreamResult(destFile);
             transformer.transform(new DOMSource(doc), result);
         } catch (ParserConfigurationException | SAXException | TransformerException | IOException e) {
@@ -621,6 +646,7 @@ public class MaterialDesignIconGenerateDialog extends DialogWrapper {
             InputStream is = new FileInputStream(originalPath);
             BufferedImage img = generateColoredIcon(ImageIO.read(is));
             ImageIO.write(img, "png", destFile);
+            is.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
