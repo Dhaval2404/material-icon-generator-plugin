@@ -2,18 +2,22 @@ package com.github.dhaval2404.material_icon_generator;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.apache.commons.io.IOUtils;
-import org.jsoup.nodes.Element;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
+import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * Generate Template file for Material MaterialIcon Generator
@@ -30,18 +34,21 @@ public class MaterialIconTemplateGenerator {
     public static void main(String[] args) throws IOException {
         //Get MaterialIcon Pack
         Map<String, String> iconPack = getIconTemplate();
-        Element element = generateTemplate(iconPack);
+        Document element = generateTemplate(iconPack);
 
-        //Generate file
-        PrintWriter out = new PrintWriter("resources/template.xml");
-        out.println("<?xml version=\"1.0\"?>");
-        out.println(element.toString());
-        out.flush();
+        XMLOutputter xmlOutput = new XMLOutputter();
+        // display nice nice
+        xmlOutput.setFormat(Format.getPrettyFormat());
+        xmlOutput.output(element, new FileWriter("resources/template.xml"));
+
+        System.out.println("File Saved!");
     }
 
-    private static Element generateTemplate(Map<String, String> iconPack) {
+    private static Document generateTemplate(Map<String, String> iconPack) {
         //Create main icons Element
         Element mainElement = new Element("icons");
+        Document doc = new Document();
+        doc.setRootElement(mainElement);
 
         boolean setDefault = true;
         Element iconElement;
@@ -50,7 +57,7 @@ public class MaterialIconTemplateGenerator {
         for (String iconName : iconPack.keySet()) {
             if (setDefault) {
                 //set first icon as default
-                mainElement.attr("default", iconName);
+                mainElement.setAttribute("default", iconName);
                 //after setting default make sure this condition never satisfied
                 setDefault = false;
             }
@@ -59,16 +66,17 @@ public class MaterialIconTemplateGenerator {
             iconElement = new Element("option");
 
             //set =>>id="action/ic_3d_rotation"
-            iconElement.attr("id", iconName);
-            iconElement.attr("version", iconPack.get(iconName));
+            iconElement.setAttribute("id", iconName);
+            iconElement.setAttribute("version", iconPack.get(iconName));
 
             //set value
-            iconElement.html(iconName);
+            iconElement.setText(iconName);
 
             //Append to main icons element
-            mainElement.appendChild(iconElement);
+            //mainElement.addContent(iconElement);
+            doc.getRootElement().addContent(iconElement);
         }
-        return mainElement;
+        return doc;
     }
 
     /**
@@ -104,7 +112,8 @@ public class MaterialIconTemplateGenerator {
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_OK) { // success
-            String response = IOUtils.toString(con.getInputStream(), Charset.defaultCharset());
+            String response = new BufferedReader(new InputStreamReader(con.getInputStream()))
+                    .lines().collect(Collectors.joining("\n"));
             return new Gson().fromJson(response, new TypeToken<Map<String, Object>>() {}.getType());
         } else {
             System.out.println("Failed to download icons");
