@@ -26,7 +26,7 @@ This plugin will help you to set [material design icons](https://material.io/res
 - Support Android Studio Multi-Module Architecture, You can select and add icons to particular module.
 - Added Support for multiple icon themes(**Filled, Outline, Rounded, Two-Tone, Sharp**) 	
 - Icons downloaded at the runtime instead of pre-build with plugin to reduce plugin size
-- Plugin Size is just 250KB.
+- Plugin size is just 240KB.
 
 
 # 🎬Preview
@@ -50,18 +50,24 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 # ✔️Changelog
 
+
+### Version: 1.3
+
+   * Sync icon database with Material Design Icons
+   * Fixed few icon download issue
+
 ### Version: 1.2
 
-  * Sync icon database with Material Design Icons
-  * Fixed icon search keyboard lagging issue
-  * Select vector icon as default option
+   * Sync icon database with Material Design Icons
+   * Fixed icon search keyboard lagging issue
+   * Select vector icon as default option
 
 ### Version: 1.1
 
-  * Fixed image padding issue when choose color other than black 
-  * Fixed image preview not visible issue
-  * Added compatible with android studio 4.0+ [#1](https://github.com/Dhaval2404/material-icon-generator-plugin/issues/1)
-  * Added plugin icon
+   * Fixed image padding issue when choose color other than black 
+   * Fixed image preview not visible issue
+   * Added compatible with android studio 4.0+ [#1](https://github.com/Dhaval2404/material-icon-generator-plugin/issues/1)
+   * Added plugin icon
 
 ### Version: 1.0
 
@@ -73,7 +79,7 @@ This plugin will help you to set [material design icons](https://material.io/res
 
 ## License
 
-    Copyright 2019-2020, Dhaval Patel
+    Copyright 2019-2021, Dhaval Patel
 	Copyright 2014-2015, Yusuke Konishi
 
     Licensed under the Apache License, Version 2.0 (the "License");

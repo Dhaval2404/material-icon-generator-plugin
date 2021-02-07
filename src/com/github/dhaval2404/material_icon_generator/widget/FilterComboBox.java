@@ -102,6 +102,10 @@ public class FilterComboBox extends JComboBox<String> {
         comboBoxList.add(text);
     }
 
+    public void clear() {
+        comboBoxList.clear();
+    }
+
     /**
      * Check if item exist in provided ComboBox Options
      *
@@ -109,9 +113,8 @@ public class FilterComboBox extends JComboBox<String> {
      */
     public String getSelectedItemText() {
         String item = (String) super.getSelectedItem();
-        if(comboBoxList.contains(item)){
+        if (comboBoxList.contains(item)) {
             return item;
-        }
-        else return null;
+        } else return null;
     }
 }
